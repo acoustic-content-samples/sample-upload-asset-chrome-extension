@@ -24,25 +24,7 @@ const assetService = '/authoring/v1/assets';
 // Content Hub blueid username and password - replace these or add code to get these from inputs
 const username = '';
 const password = '';
-
-function wchLogin() {
-  var xhr = new XMLHttpRequest();
-  var url = wchLoginApiGateway + wchLoginEndpoint;
-  xhr.open('GET', url, true);
-  xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
-  xhr.send(null);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        baseTenantUrl = xhr.getResponseHeader('x-ibm-dx-tenant-base-url');
-
-        createContextMenuEntry();
-      } else {
-        notify('Error occurred logging in.');
-      }
-    }
-  };
-}
+var contextMenuItemIdentifier;
 
 function notify(message) {
   chrome.notifications.create('wch-notification', {
@@ -115,12 +97,40 @@ function contextMenuEntryClickHandler(e) {
   }
 }
 
-function createContextMenuEntry() {
-  chrome.contextMenus.create({
+function initializeContextMenuEntry() {
+
+  if (contextMenuItemIdentifier) {
+    chrome.contextMenus.remove(contextMenuItemIdentifier);
+    contextMenuItemIdentifier = null;
+  }
+
+  contextMenuItemIdentifier = chrome.contextMenus.create({
+    'id': 'sample-upload-asset-chrome-extension',
     'title': 'Upload asset to Watson Content Hub',
     'contexts': ['image'],
     'onclick': contextMenuEntryClickHandler
   });
+}
+
+function wchLogin() {
+  var xhr = new XMLHttpRequest();
+  var url = wchLoginApiGateway + wchLoginEndpoint;
+  xhr.open('GET', url, true);
+  xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
+  xhr.send(null);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        notify('Successfully logged in.');
+        baseTenantUrl = xhr.getResponseHeader('x-ibm-dx-tenant-base-url');
+        initializeContextMenuEntry();
+      } else {
+        notify('Error occurred logging in.');
+        chrome.contextMenus.remove('sample-upload-asset-chrome-extension');
+        contextMenuItemIdentifier = null;
+      }
+    }
+  };
 }
 
 chrome.storage.sync.get({
