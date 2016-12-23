@@ -132,8 +132,9 @@ chrome.storage.sync.get({
 });
 
 chrome.storage.onChanged.addListener(function(changes) {
-  var storageChange = changes[0];
-  wchLoginApiGateway = storageChange.newValue;
+  if (changes.wchLoginApiGateway.newValue !== changes.wchLoginApiGateway.oldValue) {
+    wchLoginApiGateway = changes.wchLoginApiGateway.newValue;
 
-  wchLogin();
+    wchLogin();
+  }
 });
