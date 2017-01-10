@@ -10,6 +10,12 @@ This sample shows:
 * Authenticating to the WCH and calling APIs that require authentication.
 * Using the authoring services to upload a resource and create an asset.
 
+### Copyright ownership of images
+
+Please be aware when using this tool that images uploaded to WCH are automatically published to Akamai and immediately available publicly.
+
+When uploading images be sure that you are not violating any copyright laws i.e You should own the copyright of the image or contact the original rights-holder for permission.
+
 ### Running the sample
 
 #### 1. Download the files
