@@ -59,4 +59,4 @@ API Explorer reference documentation: https://developer.ibm.com/api/view/id-618
 
 Watson Content Hub developer center: https://developer.ibm.com/wch/
 
-Watson Content Hub forum: https://developer.ibm.com/answers/smart-spaces/watson-content-hub.html
+Watson Content Hub forum: https://developer.ibm.com/answers/smartspace/wch/
