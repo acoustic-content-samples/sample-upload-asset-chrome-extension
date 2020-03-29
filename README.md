@@ -1,6 +1,6 @@
-# Upload asset to Watson Content Hub - Chrome extension
+# Upload asset to Acoustic Content - Chrome extension
 
-This sample Chrome extension illustrates how to call IBM Watson Content Hub (WCH) APIs from client JavaScript.
+This sample Chrome extension illustrates how to call Acoustic Content (formerly Watson Content Hub or WCH) APIs from client JavaScript.
 
 The extension uses pure JavaScript to append an additional item onto the context-menu if the user right-clicks on an image in the Chrome web-browser. If the user selects this context-menu item, the image clicked will be automatically uploaded as an asset to WCH.
 
