@@ -33,9 +33,9 @@ function saveOptions() {
 
 // Restores wchLoginApiGateway state using the preferences stored in chrome.storage.
 function restoreOptions() {
-  // default wchLoginApiGateway value = 'https://my.digitalexperience.ibm.com/api/'.
+  // default wchLoginApiGateway value = 'https://content-us-1.content-cms.com/api/'.
   chrome.storage.sync.get({
-    wchLoginApiGateway: 'https://my.digitalexperience.ibm.com/api/'
+    wchLoginApiGateway: 'https://content-us-1.content-cms.com/api/'
   }, function(items) {
     document.getElementById('wchLoginApiGateway').value = items.wchLoginApiGateway;
   });

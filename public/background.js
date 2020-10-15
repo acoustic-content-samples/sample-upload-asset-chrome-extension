@@ -134,7 +134,7 @@ function wchLogin() {
 }
 
 chrome.storage.sync.get({
-  wchLoginApiGateway: 'https://my.digitalexperience.ibm.com/api/',
+  wchLoginApiGateway: 'https://content-us-1.content-cms.com/api/',
 }, function(items) {
   wchLoginApiGateway = items.wchLoginApiGateway;
 
